@@ -25,3 +25,9 @@ th test.lua
 ```
 
 which shows how to use the criterion and checks the correctness of the gradient.
+
+## Training
+
+The folder [`xmp`](xmp) contains two examples which show how a network can be trained with this criterion.
+
+ - [`recycle-embedding`](xmp/recycle-embedding.lua) recycles the embedding of the *positive* and *negative* sample from the previous epoch (faster training, less accurate)
