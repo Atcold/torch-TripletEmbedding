@@ -31,3 +31,4 @@ which shows how to use the criterion and checks the correctness of the gradient.
 The folder [`xmp`](xmp) contains two examples which show how a network can be trained with this criterion.
 
  - [`recycle-embedding`](xmp/recycle-embedding.lua) recycles the embedding of the *positive* and *negative* sample from the previous epoch (faster training, less accurate)
+ - [`fresh-embedding`](xmp/fresh-embedding.lua) computes the updated embedding of all *ancore*, *positive* and *negative* training samples (correct algorithm, thrice slower)
