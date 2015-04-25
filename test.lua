@@ -14,17 +14,17 @@ torch.manualSeed(0)
 batch = 3
 embeddingSize = 5
 
--- Ancore
+-- Ancore embedding batch
 a = torch.rand(batch, embeddingSize)
-print(b('ancore:')); print(a)
--- Positive
+print(b('ancore embedding batch:')); print(a)
+-- Positive embedding batch
 p = torch.rand(batch, embeddingSize)
-print(b('positive:')); print(p)
--- Negativep
+print(b('positive embedding batch:')); print(p)
+-- Negativep embedding batch
 n = torch.rand(batch, embeddingSize)
-print(b('negative:')); print(n)
+print(b('negative embedding batch:')); print(n)
 
-
+-- Testing the loss function forward and backward
 loss = nn.TripletEmbeddingCriterion(.2)
 print(colour.red('loss: '), loss:forward({a, p, n}), '\n')
 print(b('gradInput[1]:')); print(loss:backward({a, p, n})[1])
