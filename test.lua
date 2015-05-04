@@ -1,11 +1,18 @@
 --------------------------------------------------------------------------------
 -- Test function for TripletEmbeddingCriterion
 --------------------------------------------------------------------------------
--- Alfredo Canziani, Apr 15
+-- Alfredo Canziani, Apr/May 15
 --------------------------------------------------------------------------------
+
+cuda = false
 
 require 'nn'
 require 'TripletEmbedding'
+if cuda then
+   require 'cutorch'
+   torch.setdefaulttensortype('torch.CudaTensor')
+   cutorch.manualSeedAll(0)
+end
 colour = require 'trepl.colorize'
 local b = colour.blue
 
@@ -26,6 +33,7 @@ print(b('negative embedding batch:')); print(n)
 
 -- Testing the loss function forward and backward
 loss = nn.TripletEmbeddingCriterion(.2)
+if cuda then loss = loss:cuda() end
 print(colour.red('loss: '), loss:forward({a, p, n}), '\n')
 gradInput = loss:backward({a, p, n})
 print(b('gradInput[1]:')); print(gradInput[1])
