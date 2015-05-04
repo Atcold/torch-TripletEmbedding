@@ -50,7 +50,7 @@ print(b('Fresh-embeddings-computation network:')); print(parallel)
 -- Cost function
 loss = nn.TripletEmbeddingCriterion()
 
-for i = 1, 4 do
+for i = 1, 6 do
    print(colour.green('Epoch ' .. i))
    predict = parallel:forward({aImgs, pImgs, nImgs})
    err = loss:forward(predict)
