@@ -36,8 +36,8 @@ convNet:add(nn.View(8*2*2))
 convNet:add(nn.Linear(8*2*2, embeddingSize))
 convNet:add(nn.BatchNormalization(0))
 
-convNetPos = convNet:clone('weight', 'bias')
-convNetNeg = convNet:clone('weight', 'bias')
+convNetPos = convNet:clone('weight', 'bias', 'gradWeight', 'gradBias')
+convNetNeg = convNet:clone('weight', 'bias', 'gradWeight', 'gradBias')
 
 -- Parallel container
 parallel = nn.ParallelTable()
@@ -50,7 +50,7 @@ print(b('Fresh-embeddings-computation network:')); print(parallel)
 -- Cost function
 loss = nn.TripletEmbeddingCriterion()
 
-for i = 1, 6 do
+for i = 1, 9 do
    print(colour.green('Epoch ' .. i))
    predict = parallel:forward({aImgs, pImgs, nImgs})
    err = loss:forward(predict)
