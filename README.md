@@ -32,3 +32,10 @@ The folder [`xmp`](xmp) contains two examples which show how a network can be tr
 
  - [`recycle-embedding`](xmp/recycle-embedding.lua) recycles the embedding of the *positive* and *negative* sample from the previous epoch (faster training, less accurate)
  - [`fresh-embedding`](xmp/fresh-embedding.lua) computes the updated embedding of all *ancore*, *positive* and *negative* training samples (correct algorithm, thrice slower)
+
+## Triplet construction
+
+The folder `data` contains a package for generating *triplets* to feed to a network.
+
+To test the data script, run `data-test.lua`, but you need to have a dataset in the format described in `data.lua`.
+In this same file is provided a snippet from the training script.
