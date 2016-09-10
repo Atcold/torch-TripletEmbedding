@@ -28,10 +28,10 @@ function TripletEmbeddingCriterion:updateGradInput(input)
    local p = input[2] -- positive
    local n = input[3] -- negative
    local N = a:size(1)
-   
-   self.gradInput[1] = (n - p):cmul(self.Li:gt(0):repeatTensor(a:size(2),1):t():type(a:type()) * 2/N)
-   self.gradInput[2] = (p - a):cmul(self.Li:gt(0):repeatTensor(a:size(2),1):t():type(a:type()) * 2/N)
-   self.gradInput[3] = (a - n):cmul(self.Li:gt(0):repeatTensor(a:size(2),1):t():type(a:type()) * 2/N)
+
+   self.gradInput[1] = (n - p):cmul(self.Li:gt(0):repeatTensor(1,a:size(2)):type(a:type()) * 2/N)
+   self.gradInput[2] = (p - a):cmul(self.Li:gt(0):repeatTensor(1,a:size(2)):type(a:type()) * 2/N)
+   self.gradInput[3] = (a - n):cmul(self.Li:gt(0):repeatTensor(1,a:size(2)):type(a:type()) * 2/N)
 
    return self.gradInput
 end
